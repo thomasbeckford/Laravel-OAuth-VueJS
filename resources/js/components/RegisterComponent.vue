@@ -44,7 +44,7 @@ export default {
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
           axios.post('/api/auth/signup', body, { headers: headers })
           .then(function (response) {
-              
+            self.$router.push('/')
           })
           .catch(function (error) {
               console.log(error)

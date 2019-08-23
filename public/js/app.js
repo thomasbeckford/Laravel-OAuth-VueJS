@@ -1746,13 +1746,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      id: "",
+      id_delete: "",
       title: "",
-      body: ""
+      body: "",
+      id_find: ""
     };
   },
   mounted: function mounted() {
@@ -1771,7 +1782,7 @@ __webpack_require__.r(__webpack_exports__);
         'X-Requested-With': 'XMLHttpRequest',
         'Authorization': 'Bearer ' + this.$cookie.get('access_token')
       };
-      axios["delete"]("/api/auth/books/".concat(this.id, "/").concat(this.$cookie.get('user_id')), {
+      axios["delete"]("/api/auth/books/".concat(this.id_delete), {
         headers: headers
       }).then(function (response) {
         console.log(response);
@@ -1780,7 +1791,41 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     handleUpdate: function handleUpdate(e) {},
-    handleGetAll: function handleGetAll(e) {},
+    handleAll: function handleAll(e) {
+      e.preventDefault();
+      var self = this;
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.get('/api/auth/books', {
+        headers: headers
+      }).then(function (response) {
+        return results = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    handleFind: function handleFind(e) {
+      e.preventDefault();
+      var self = this;
+      var body = {
+        user_id: this.$cookie.get('user_id')
+      };
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.get("/api/auth/books/".concat(this.id_find), {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     handleStore: function handleStore(e) {
       e.preventDefault();
       var self = this;
@@ -1935,7 +1980,9 @@ __webpack_require__.r(__webpack_exports__);
       };
       axios.post('/api/auth/signup', body, {
         headers: headers
-      }).then(function (response) {})["catch"](function (error) {
+      }).then(function (response) {
+        self.$router.push('/');
+      })["catch"](function (error) {
         console.log(error);
       });
     }
@@ -37428,188 +37475,215 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.handleGetAll($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          staticClass: "fadeIn fourth",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "submit", value: "Get all books" }
-        })
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.handleFindById($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          staticClass: "fadeIn",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "text", placeholder: "ID" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "fadeIn fourth",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "submit", value: "Find by id" }
-        })
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.handleStore($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.title,
-              expression: "title"
-            }
-          ],
-          staticClass: "fadeIn",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "text", placeholder: "Title" },
-          domProps: { value: _vm.title },
+  return _c("div", [
+    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
+      _c(
+        "form",
+        {
           on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.title = $event.target.value
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.handleAll($event)
             }
           }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.body,
-              expression: "body"
-            }
-          ],
-          staticClass: "fadeIn",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "text", placeholder: "Body" },
-          domProps: { value: _vm.body },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.body = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "fadeIn fourth",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "submit", value: "Create" }
-        })
-      ]
-    ),
+        },
+        [
+          _c("input", {
+            staticClass: "fadeIn fourth",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "submit", value: "Get all books" }
+          })
+        ]
+      )
+    ]),
     _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.handleUpdate($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          staticClass: "fadeIn",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "text", placeholder: "Title" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "fadeIn",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "text", placeholder: "Body" }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "fadeIn fourth",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "submit", value: "Find by id" }
-        })
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.handleDelete($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.id,
-              expression: "id"
-            }
-          ],
-          staticClass: "fadeIn",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "text", placeholder: "id for delete" },
-          domProps: { value: _vm.id },
+    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
+      _c(
+        "form",
+        {
           on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.id = $event.target.value
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.handleFind($event)
             }
           }
-        }),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "fadeIn fourth",
-          staticStyle: { "margin-top": "20px" },
-          attrs: { type: "submit", value: "Delete by id" }
-        })
-      ]
-    )
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.id_find,
+                expression: "id_find"
+              }
+            ],
+            staticClass: "fadeIn",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "text", placeholder: "ID" },
+            domProps: { value: _vm.id_find },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.id_find = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "fadeIn fourth",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "submit", value: "Find by id" }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.handleStore($event)
+            }
+          }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.title,
+                expression: "title"
+              }
+            ],
+            staticClass: "fadeIn",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "text", placeholder: "Title" },
+            domProps: { value: _vm.title },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.title = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.body,
+                expression: "body"
+              }
+            ],
+            staticClass: "fadeIn",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "text", placeholder: "Body" },
+            domProps: { value: _vm.body },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.body = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "fadeIn fourth",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "submit", value: "Create" }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.handleUpdate($event)
+            }
+          }
+        },
+        [
+          _c("input", {
+            staticClass: "fadeIn",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "text", placeholder: "Title" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "fadeIn",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "text", placeholder: "Body" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "fadeIn fourth",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "submit", value: "Update" }
+          })
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.handleDelete($event)
+            }
+          }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.id_delete,
+                expression: "id_delete"
+              }
+            ],
+            staticClass: "fadeIn",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "text", placeholder: "id for delete" },
+            domProps: { value: _vm.id_delete },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.id_delete = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "fadeIn fourth",
+            staticStyle: { "margin-top": "20px" },
+            attrs: { type: "submit", value: "Delete by id" }
+          })
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = []

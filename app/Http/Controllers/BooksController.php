@@ -33,6 +33,7 @@ class BooksController extends Controller
 
     public function delete(Request $request, $id)
     {
+        
         $book = Book::findOrFail($id);
         $book->delete();
 
