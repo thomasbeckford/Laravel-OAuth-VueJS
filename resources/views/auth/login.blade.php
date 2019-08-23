@@ -3,9 +3,6 @@
 <link href="{{ asset('css/auth-login.css') }}" rel="stylesheet">
 @section('content')
 
-
-
-<login-component></login-component>
-
+ <router-view></router-view>
 
 @endsection

@@ -13,7 +13,7 @@
                   <input type="password" class="fadeIn third" id="password_confirmation" name="password_confirmation" v-model="password_confirmation" placeholder="Password Confirmation">
                   <input type="submit" class="fadeIn fourth" value="Register" style="margin-top:20px">
                 </form>
-                <a href="/" className="fadeIn fourth">Login</a>
+                <router-link className="fadeIn fourth" to="/">Login</router-link>
               </div>
             </div>
         </div>

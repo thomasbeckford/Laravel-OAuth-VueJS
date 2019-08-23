@@ -11,7 +11,7 @@
                   <input id="password" type="password" class="fadeIn third" name="password" v-model="password" placeholder="Password">
                   <input type="submit" class="fadeIn fourth" value="Log in" style="margin-top:20px">
                 </form>
-                  <a href="/register" className="fadeIn fourth">Register</a>
+                  <router-link to="/register">Register</router-link>
               </div>
             </div>
         </div>
@@ -19,8 +19,9 @@
     </div>
 </template>
 
-<script>
 
+
+<script>
 
 export default {
   data: function() {
@@ -32,14 +33,16 @@ export default {
   methods:{
       handleSubmit:function(e){
           e.preventDefault();
+          const self = this;
           let body = { email: this.email, password: this.password, remember_me: true }
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
           axios.post('/api/auth/login', body, { headers: headers })
           .then(function (response) {
-            router.push('home')
+            router.push("yourroutename")
           })
           .catch(function (error) {
-              console.log(error)
+            router.push("yourroutename")
+             
           });
       }
   }
