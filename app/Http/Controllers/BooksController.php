@@ -21,6 +21,8 @@ class BooksController extends Controller
 
     public function store(Request $request)
     {
+        $userid = $request->user()->id;
+        $request->request->add(['user_id' => $userid]);
         return Book::create($request->all());
     }
 
@@ -34,15 +36,19 @@ class BooksController extends Controller
 
     public function delete(Request $request, $id)
     {
-<<<<<<< HEAD
-        
-=======
-        dd($request->user()->id);
->>>>>>> 2e52ccf81407685f94c9ff3331f220a3dca39e94
-        $book = Book::findOrFail($id);
-        $book->delete();
 
+        $userid = $request->user()->id;
+        $book = Book::findOrFail($id);
+        
+        if($book->user_id == $userid){
+          $book->delete();
         return 204;
+
+        } else {
+        
+        return 409;
+        }
+
     }
 
 }

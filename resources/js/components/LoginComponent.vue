@@ -12,6 +12,7 @@
                   <input type="submit" class="fadeIn fourth" value="Log in" style="margin-top:20px">
                 </form>
                   <router-link to="/register">Register</router-link>
+                  <p style="color: red">{{ login_error }}</p>
               </div>
             </div>
         </div>
@@ -27,7 +28,8 @@ export default {
   data: function() {
     return {
       email:"",
-      password: ""
+      password: "",
+      login_error:""
     };
   },
   mounted(){
@@ -49,6 +51,7 @@ export default {
           })
           .catch(function (error) {
             console.log(error)
+            self.login_error = "Error, please try again"
           });
       }
   }

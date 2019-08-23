@@ -1715,9 +1715,167 @@ module.exports = function isBuffer (obj) {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BooksComponent.vue?vue&type=script&lang=js& ***!
   \*************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/Thomas/Workspace/backendtest/resources/js/components/BooksComponent.vue: Unexpected token (67:2)\n\n\u001b[0m \u001b[90m 65 | \u001b[39m          }\u001b[0m\n\u001b[0m \u001b[90m 66 | \u001b[39m          let headers \u001b[33m=\u001b[39m { \u001b[32m'Content-Type'\u001b[39m\u001b[33m:\u001b[39m \u001b[32m'application/json'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'X-Requested-With'\u001b[39m\u001b[33m:\u001b[39m \u001b[32m'XMLHttpRequest'\u001b[39m\u001b[33m,\u001b[39m \u001b[32m'Authorization'\u001b[39m\u001b[33m:\u001b[39m \u001b[32m'Bearer '\u001b[39m\u001b[33m+\u001b[39m\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39m$cookie\u001b[33m.\u001b[39mget(\u001b[32m'access_token'\u001b[39m) }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 67 | \u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 68 | \u001b[39m          axios\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m(\u001b[32m`/api/auth/books/${this.id_delete}`\u001b[39m\u001b[33m,\u001b[39m { headers\u001b[33m:\u001b[39m headers })\u001b[0m\n\u001b[0m \u001b[90m 69 | \u001b[39m\u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 70 | \u001b[39m          axios\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m(\u001b[32m`/api/auth/books/${this.id}`\u001b[39m\u001b[33m,\u001b[39m { headers\u001b[33m:\u001b[39m headers })\u001b[0m\n    at Parser.raise (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:6325:17)\n    at Parser.unexpected (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:7642:16)\n    at Parser.parseExprAtom (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8841:20)\n    at Parser.parseExprSubscripts (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8412:23)\n    at Parser.parseMaybeUnary (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8392:21)\n    at Parser.parseExprOpBaseRightExpr (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8352:34)\n    at Parser.parseExprOpRightExpr (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8345:21)\n    at Parser.parseExprOp (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8317:27)\n    at Parser.parseExprOps (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8277:17)\n    at Parser.parseMaybeConditional (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8240:23)\n    at Parser.parseMaybeAssign (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8187:21)\n    at Parser.parseVar (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10480:26)\n    at Parser.parseVarStatement (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10299:10)\n    at Parser.parseStatementContent (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9896:21)\n    at Parser.parseStatement (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9829:17)\n    at Parser.parseBlockOrModuleBlockBody (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10405:25)\n    at Parser.parseBlockBody (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10392:10)\n    at Parser.parseBlock (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10376:10)\n    at Parser.parseFunctionBody (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9424:24)\n    at Parser.parseFunctionBodyAndFinish (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9394:10)\n    at withTopicForbiddingContext (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10535:12)\n    at Parser.withTopicForbiddingContext (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9702:14)\n    at Parser.parseFunction (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:10534:10)\n    at Parser.parseFunctionExpression (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8877:17)\n    at Parser.parseExprAtom (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8790:21)\n    at Parser.parseExprSubscripts (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8412:23)\n    at Parser.parseMaybeUnary (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8392:21)\n    at Parser.parseExprOps (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8267:23)\n    at Parser.parseMaybeConditional (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8240:23)\n    at Parser.parseMaybeAssign (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8187:21)\n    at Parser.parseObjectProperty (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9281:101)\n    at Parser.parseObjPropValue (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9306:101)\n    at Parser.parseObjectMember (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9230:10)\n    at Parser.parseObj (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:9154:25)\n    at Parser.parseExprAtom (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8784:28)\n    at Parser.parseExprSubscripts (/Users/Thomas/Workspace/backendtest/node_modules/@babel/parser/lib/index.js:8412:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      id_delete: "",
+      title: "",
+      body: "",
+      id_find: "",
+      id_update: "",
+      allbooks: "",
+      byidbooks: "",
+      title_store: "",
+      body_store: "",
+      title_update: "",
+      body_update: ""
+    };
+  },
+  mounted: function mounted() {
+    console.log("books");
+    if (!this.$cookie.get('access_token')) this.$router.push('/');
+  },
+  methods: {
+    handleDelete: function handleDelete(e) {
+      e.preventDefault();
+      var self = this;
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios["delete"]("/api/auth/books/".concat(this.id_delete), {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    handleUpdate: function handleUpdate(e) {
+      e.preventDefault();
+      var self = this;
+      var body = {
+        title: this.title_update,
+        body: this.body_update
+      };
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.put("/api/auth/books/".concat(this.id_update), body, {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    handleAll: function handleAll(e) {
+      e.preventDefault();
+      var self = this;
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.get('/api/auth/books', {
+        headers: headers
+      }).then(function (response) {
+        console.log(response.data);
+        self.allbooks = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    handleFind: function handleFind(e) {
+      e.preventDefault();
+      var self = this;
+      var body = {
+        user_id: this.$cookie.get('user_id')
+      };
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.get("/api/auth/books/".concat(this.id_find), {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+        self.byidbooks = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    handleStore: function handleStore(e) {
+      e.preventDefault();
+      var self = this;
+      var body = {
+        title: this.title_store,
+        body: this.body
+      };
+      console.log(this.$cookie.get('user_id'));
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.post('/api/auth/books', body, {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -1753,11 +1911,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      login_error: ""
     };
   },
   mounted: function mounted() {
@@ -1785,6 +1945,7 @@ __webpack_require__.r(__webpack_exports__);
         self.$router.push('books');
       })["catch"](function (error) {
         console.log(error);
+        self.login_error = "Error, please try again";
       });
     }
   }
@@ -1824,18 +1985,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       name: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      register_error: ""
     };
   },
   methods: {
     handleSubmit: function handleSubmit(e) {
       e.preventDefault();
+      var self = this;
       var body = {
         name: this.name,
         email: this.email,
@@ -1849,9 +2013,12 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/auth/signup', body, {
         headers: headers
       }).then(function (response) {
+        console.log(response);
         self.$router.push('/');
       })["catch"](function (error) {
         console.log(error);
+        console.log("error");
+        self.register_error = "Error, please try again";
       });
     }
   }
@@ -37344,170 +37511,264 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.handleAll($event)
-            }
-          }
-        },
-        [
-          _c("input", {
-            staticClass: "fadeIn fourth",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "submit", value: "Get all books" }
-          })
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.handleFind($event)
-            }
-          }
-        },
-        [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.id_find,
-                expression: "id_find"
-              }
-            ],
-            staticClass: "fadeIn",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "text", placeholder: "ID" },
-            domProps: { value: _vm.id_find },
+    _c(
+      "div",
+      {
+        staticStyle: {
+          border: "1px solid lightgrey",
+          "margin-bottom": "5px",
+          "margin-top": "30px"
+        }
+      },
+      [
+        _c(
+          "form",
+          {
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.id_find = $event.target.value
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.handleAll($event)
               }
             }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "fadeIn fourth",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "submit", value: "Find by id" }
-          })
-        ]
-      )
-    ]),
+          },
+          [
+            _c("input", {
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "submit", value: "Get all books" }
+            })
+          ]
+        ),
+        _vm._v("\n    " + _vm._s(_vm.allbooks) + "\n  ")
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.handleStore($event)
-            }
-          }
-        },
-        [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.title,
-                expression: "title"
-              }
-            ],
-            staticClass: "fadeIn",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "text", placeholder: "Title" },
-            domProps: { value: _vm.title },
+    _c(
+      "div",
+      {
+        staticStyle: { border: "1px solid lightgrey", "margin-bottom": "5px" }
+      },
+      [
+        _c(
+          "form",
+          {
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.title = $event.target.value
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.handleFind($event)
               }
             }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.body,
-                expression: "body"
-              }
-            ],
-            staticClass: "fadeIn",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "text", placeholder: "Body" },
-            domProps: { value: _vm.body },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.id_find,
+                  expression: "id_find"
                 }
-                _vm.body = $event.target.value
+              ],
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "text", placeholder: "ID" },
+              domProps: { value: _vm.id_find },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.id_find = $event.target.value
+                }
               }
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "fadeIn fourth",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "submit", value: "Create" }
-          })
-        ]
-      )
-    ]),
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "submit", value: "Find by id" }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("p", { staticStyle: { "margin-left": "30px" } }, [
+          _vm._v("Title: " + _vm._s(_vm.byidbooks.title))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticStyle: { "margin-left": "30px" } }, [
+          _vm._v("Body: " + _vm._s(_vm.byidbooks.body))
+        ])
+      ]
+    ),
     _vm._v(" "),
-    _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.handleUpdate($event)
+    _c(
+      "div",
+      {
+        staticStyle: { border: "1px solid lightgrey", "margin-bottom": "5px" }
+      },
+      [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.handleStore($event)
+              }
             }
-          }
-        },
-        [
-          _c("input", {
-            staticClass: "fadeIn",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "text", placeholder: "Title" }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "fadeIn",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "text", placeholder: "Body" }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "fadeIn fourth",
-            staticStyle: { "margin-top": "20px" },
-            attrs: { type: "submit", value: "Update" }
-          })
-        ]
-      )
-    ]),
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title_store,
+                  expression: "title_store"
+                }
+              ],
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "text", placeholder: "Title" },
+              domProps: { value: _vm.title_store },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title_store = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.body_store,
+                  expression: "body_store"
+                }
+              ],
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "text", placeholder: "Body" },
+              domProps: { value: _vm.body_store },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.body_store = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "submit", value: "Create" }
+            })
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticStyle: { border: "1px solid lightgrey", "margin-bottom": "5px" }
+      },
+      [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.handleUpdate($event)
+              }
+            }
+          },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.id_update,
+                  expression: "id_update"
+                }
+              ],
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "text", placeholder: "ID" },
+              domProps: { value: _vm.id_update },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.id_update = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.title_update,
+                  expression: "title_update"
+                }
+              ],
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "text", placeholder: "Title" },
+              domProps: { value: _vm.title_update },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.title_update = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.body_update,
+                  expression: "body_update"
+                }
+              ],
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "text", placeholder: "Body" },
+              domProps: { value: _vm.body_update },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.body_update = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "fadeIn",
+              staticStyle: { "margin-top": "20px" },
+              attrs: { type: "submit", value: "Update" }
+            })
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticStyle: { border: "1px solid lightgrey" } }, [
       _c(
@@ -37532,7 +37793,10 @@ var render = function() {
             ],
             staticClass: "fadeIn",
             staticStyle: { "margin-top": "20px" },
-            attrs: { type: "text", placeholder: "id for delete" },
+            attrs: {
+              type: "text",
+              placeholder: "Please insert book ID to delete."
+            },
             domProps: { value: _vm.id_delete },
             on: {
               input: function($event) {
@@ -37545,7 +37809,7 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("input", {
-            staticClass: "fadeIn fourth",
+            staticClass: "fadeIn",
             staticStyle: { "margin-top": "20px" },
             attrs: { type: "submit", value: "Delete by id" }
           })
@@ -37667,6 +37931,10 @@ var render = function() {
                 _vm._v(" "),
                 _c("router-link", { attrs: { to: "/register" } }, [
                   _vm._v("Register")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticStyle: { color: "red" } }, [
+                  _vm._v(_vm._s(_vm.login_error))
                 ])
               ],
               1
@@ -37847,7 +38115,11 @@ var render = function() {
                   "router-link",
                   { attrs: { className: "fadeIn fourth", to: "/" } },
                   [_vm._v("Login")]
-                )
+                ),
+                _vm._v(" "),
+                _c("p", { staticStyle: { color: "red" } }, [
+                  _vm._v(_vm._s(_vm.register_error))
+                ])
               ],
               1
             )

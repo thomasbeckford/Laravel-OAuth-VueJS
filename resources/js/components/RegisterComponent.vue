@@ -14,6 +14,7 @@
                   <input type="submit" class="fadeIn fourth" value="Register" style="margin-top:20px">
                 </form>
                 <router-link className="fadeIn fourth" to="/">Login</router-link>
+                <p style="color: red">{{ register_error }}</p>
               </div>
             </div>
         </div>
@@ -29,12 +30,14 @@ export default {
       name:"",
       email:"",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      register_error:""
     };
   },
   methods:{
       handleSubmit:function(e){
           e.preventDefault();
+          const self = this;
           let body = { 
             name: this.name,
             email:this.email, 
@@ -44,10 +47,13 @@ export default {
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
           axios.post('/api/auth/signup', body, { headers: headers })
           .then(function (response) {
+            console.log(response)
             self.$router.push('/')
           })
           .catch(function (error) {
               console.log(error)
+              console.log("error")
+              self.register_error = "Error, please try again"
           });
       }
   }
