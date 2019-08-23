@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="crud">
     <div class="col-1">
       <img :src="image"/>
@@ -56,4 +56,4 @@ import CrudComponent from './CrudComponent.vue';
     }
   }
 
-  </script>
+  </script> -->

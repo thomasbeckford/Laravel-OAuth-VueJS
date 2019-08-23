@@ -9,14 +9,19 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router'
-  
+import VueCookie from 'vue-cookie';
+
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
 Vue.use(VueRouter)
    
 const routes = [
-  { path: '/', component: require('./components/LoginComponent.vue').default },
-  { path: '/register', component: require('./components/RegisterComponent.vue').default }
+  { name:'login', path: '/', component: require('./components/LoginComponent.vue').default },
+  { name:'register', path: '/register', component: require('./components/RegisterComponent.vue').default },
+  { name:'books', path: '/books', component: require('./components/BooksComponent.vue').default }
 ]
-  
+
+
 const router = new VueRouter({
   routes 
 })

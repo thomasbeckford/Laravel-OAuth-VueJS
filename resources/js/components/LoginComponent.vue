@@ -30,6 +30,10 @@ export default {
       password: ""
     };
   },
+  mounted(){
+    console.log("mounted")
+  },
+
   methods:{
       handleSubmit:function(e){
           e.preventDefault();
@@ -38,11 +42,12 @@ export default {
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
           axios.post('/api/auth/login', body, { headers: headers })
           .then(function (response) {
-            router.push("yourroutename")
+            console.log(response)
+            self.$cookie.set("access_token", response.data.access_token, "111");
+            self.$router.push('books')
           })
           .catch(function (error) {
-            router.push("yourroutename")
-             
+            console.log(error)
           });
       }
   }

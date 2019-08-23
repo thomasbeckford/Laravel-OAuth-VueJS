@@ -44,7 +44,7 @@ export default {
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
           axios.post('/api/auth/signup', body, { headers: headers })
           .then(function (response) {
-              window.location.assign('/')
+              
           })
           .catch(function (error) {
               console.log(error)
