@@ -54,8 +54,8 @@ import CrudComponent from './CrudComponent.vue';
       this.$router.push('/')
   },
 
-  
-  
+
+
   methods: {
       handleDelete:function(e){
           e.preventDefault();
@@ -64,7 +64,11 @@ import CrudComponent from './CrudComponent.vue';
             user_id: this.$cookie.get('user_id')
           }
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest', 'Authorization': 'Bearer '+this.$cookie.get('access_token') }
+<<<<<<< HEAD
           axios.delete(`/api/auth/books/${this.id_delete}`, { headers: headers })
+=======
+          axios.delete(`/api/auth/books/${this.id}`, { headers: headers })
+>>>>>>> 2e52ccf81407685f94c9ff3331f220a3dca39e94
           .then(function (response) {
             console.log(response)
           })

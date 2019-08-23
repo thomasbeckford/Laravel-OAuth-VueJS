@@ -10,9 +10,10 @@ class BooksController extends Controller
 
     public function index()
     {
+
         return Book::all();
     }
- 
+
     public function show($id)
     {
         return Book::find($id);
@@ -33,7 +34,11 @@ class BooksController extends Controller
 
     public function delete(Request $request, $id)
     {
+<<<<<<< HEAD
         
+=======
+        dd($request->user()->id);
+>>>>>>> 2e52ccf81407685f94c9ff3331f220a3dca39e94
         $book = Book::findOrFail($id);
         $book->delete();
 
