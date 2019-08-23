@@ -11,16 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/settings', 'SettingsController@index')->name('settings');
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('todos', 'TodoController');
-Route::get('/settings', 'SettingsController@index')->name('settings');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/',array('as' => 'index', function()
+{
+    return view('auth.login');
+}));
