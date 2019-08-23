@@ -6,11 +6,12 @@
            <h2 style="font-size: 50px">Login</h2>
             <div class="wrapper fadeInDown">
               <div id="formContent" style="padding:40px">
-                <form method="POST" action="{{}}">
-                  <input type="text" id="name" class="fadeIn second" name="name" placeholder="User">
-                  <input type="password" class="fadeIn third" name="password" placeholder="Password">
+                <form @submit.prevent="handleSubmit">
+                  <input type="text" id="email" class="fadeIn second" name="email" v-model="email" placeholder="User">
+                  <input id="password" type="password" class="fadeIn third" name="password" v-model="password" placeholder="Password">
                   <input type="submit" class="fadeIn fourth" value="Log in" style="margin-top:20px">
                 </form>
+                  <a href="/register" className="fadeIn fourth">Register</a>
               </div>
             </div>
         </div>
@@ -20,11 +21,28 @@
 
 <script>
 
-  export default {
-      mounted() {
-        console.log('Component mounted.')
+
+export default {
+  data: function() {
+    return {
+      email:"",
+      password: ""
+    };
+  },
+  methods:{
+      handleSubmit:function(e){
+          e.preventDefault();
+          let body = { email: this.email, password: this.password, remember_me: true }
+          let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+          axios.post('/api/auth/login', body, { headers: headers })
+          .then(function (response) {
+            router.push('home')
+          })
+          .catch(function (error) {
+              console.log(error)
+          });
       }
   }
-
+};
 </script>
 

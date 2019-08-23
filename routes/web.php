@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/',array('as' => 'index', function()
-{
-    return view('auth.login');
-}));
+
+Route::get('/', function() {
+ 	return view('auth.login');
+});
+
+Route::get('/register', function(){
+	return view('auth.register');
+});
