@@ -38,10 +38,10 @@ export default {
       handleSubmit:function(e){
           e.preventDefault();
           const self = this;
-          let body = { 
+          let body = {
             name: this.name,
-            email:this.email, 
-            password:this.password, 
+            email:this.email,
+            password:this.password,
             password_confirmation: this.password_confirmation
           }
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
@@ -53,10 +53,9 @@ export default {
           .catch(function (error) {
               console.log(error)
               console.log("error")
-              self.register_error = "Error, please try again"
+              self.register_error = "An error has ocurred. Please try again"
           });
       }
   }
 };
 </script>
-

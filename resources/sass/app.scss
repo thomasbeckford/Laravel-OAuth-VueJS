@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.content {
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+ul {
+  text-align: left;
+}
+.left {
+  text-align: left;
+  margin-left: 30px;
+}

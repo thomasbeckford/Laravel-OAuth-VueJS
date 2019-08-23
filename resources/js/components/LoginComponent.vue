@@ -47,14 +47,14 @@ export default {
             console.log(response)
             self.$cookie.set("access_token", response.data.access_token, "111");
             self.$cookie.set("user_id", response.data.user_id.id, "111");
+            self.$cookie.set("user_name", response.data.user_id.name, "111");
             self.$router.push('books')
           })
           .catch(function (error) {
             console.log(error)
-            self.login_error = "Error, please try again"
+            self.login_error = "Login failed. Check your credentials"
           });
       }
   }
 };
 </script>
-

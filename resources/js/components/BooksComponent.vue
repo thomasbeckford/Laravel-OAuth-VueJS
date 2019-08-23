@@ -1,6 +1,10 @@
 <template>
   <div>
-    
+  <div class="logout">
+  Welcome <strong>{{ this.$cookie.get('user_name') }}</strong>
+  <a href="#" v-on:click="handleLogout">Logout</a>
+  </div>
+
     <div style="border: 1px solid lightgrey; margin-bottom:5px;margin-top:30px;">
      <form @submit.prevent="handleAll">
       <input type="submit" class="fadeIn" value="Get all books" style="margin-top:20px">
@@ -8,9 +12,9 @@
     <ul style="list-style-type: none;">
       <li v-for="(item,key, index) in allbooks">
         <div v-if="item.title">
-          <span style="color: green;">ID: {{item.id}}</span>
-          <span style="color: black;">TITLE: {{ item.title }}</span>
-          <span style="color: blue">BODY: {{ item.body }}</span>
+          <span style="color: green;">#{{item.id}}</span>
+          <span style="color: red;"> {{ item.title }}</span>
+          <span style="color: blue"> {{ item.body }}</span>
         </div>
       </li>
     </ul>
@@ -21,11 +25,13 @@
       <input type="text" class="fadeIn" v-model="id_find"  placeholder="ID" style="margin-top:20px">
       <input type="submit" class="fadeIn" value="Find by id" style="margin-top:20px">
     </form>
-      <p style="margin-left:30px">{{ byidbooks.title }}</p>
-      <p style="margin-left:30px">{{ byidbooks.body }}</p>
-      <p v-if="!byidbooks.title" style="margin-left:30px">{{ not_found }}</p>
+    <div class="left">
+      <p>Title: {{ byidbooks.title }}</p>
+      <p>Body: {{ byidbooks.body }}</p>
+      <p v-if="!byidbooks.title">{{ not_found }}</p>
+      </div>
     </div>
-    
+
     <div style="border: 1px solid lightgrey; margin-bottom:5px;">
      <form @submit.prevent="handleStore">
       <input type="text" class="fadeIn" placeholder="Title" v-model="title_store" style="margin-top:20px">
@@ -51,6 +57,7 @@
    </div>
 
   </div>
+
 </template>
 
 <script>
@@ -74,20 +81,32 @@
       title_update:"",
       body_update:"",
       not_found: ""
-
-  }
-
+    }
   },
-  mounted(){
-    console.log("books");
-    if(!this.$cookie.get('access_token'))
+  mounted() {
+    if(!this.$cookie.get('access_token')){
       this.$router.push('/')
+    }
   },
-
-
-
   methods: {
-      handleDelete:function(e){
+    handleLogout:function(e){
+        e.preventDefault();
+        const self = this;
+        self.$cookie.delete('user_id');
+        self.$cookie.delete('access_token');
+        let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest', 'Authorization': 'Bearer '+this.$cookie.get('access_token') }
+        axios.get(`/api/auth/logout`, { headers: headers })
+
+        .then(function (response) {
+          window.location.href = "/?logout"
+
+        })
+        .catch(function (error) {
+          window.location.href = "/?logout"
+          console.log(error)
+        });
+    },
+    handleDelete:function(e){
           e.preventDefault();
           const self = this;
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest', 'Authorization': 'Bearer '+this.$cookie.get('access_token') }
@@ -95,8 +114,11 @@
 
           .then(function (response) {
             console.log(response)
+            alert('Deleted successfully')
+
           })
           .catch(function (error) {
+          alert('Delete failed')
             console.log(error)
           });
       },
@@ -114,8 +136,10 @@
 
           .then(function (response) {
             console.log(response)
+            alert('Updated successfully')
           })
           .catch(function (error) {
+            alert('Update failed')
             console.log(error)
           });
       },
@@ -130,6 +154,7 @@
 
           })
           .catch(function (error) {
+            alert('Get failed')
             console.log(error)
           });
       },
@@ -148,7 +173,8 @@
           })
           .catch(function (error) {
             console.log(error)
-          });        
+            alert('Find failed')
+          });
       },
       handleStore:function(e){
           e.preventDefault();
@@ -161,10 +187,12 @@
           let headers = { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest', 'Authorization': 'Bearer '+this.$cookie.get('access_token') }
           axios.post('/api/auth/books', body, { headers: headers })
           .then(function (response) {
-            console.log(response)
+            console.log(response);
+            alert('Stored successfully')
           })
           .catch(function (error) {
             console.log(error)
+            alert('Store failed')
           });
       },
 

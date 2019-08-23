@@ -1384,7 +1384,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -1688,28 +1688,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
-/*!************************************************************!*\
-  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-module.exports = function isBuffer (obj) {
-  return obj != null && obj.constructor != null &&
-    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/BooksComponent.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/BooksComponent.vue?vue&type=script&lang=js& ***!
@@ -1719,6 +1697,13 @@ module.exports = function isBuffer (obj) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1795,10 +1780,30 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log("books");
-    if (!this.$cookie.get('access_token')) this.$router.push('/');
+    if (!this.$cookie.get('access_token')) {
+      this.$router.push('/');
+    }
   },
   methods: {
+    handleLogout: function handleLogout(e) {
+      e.preventDefault();
+      var self = this;
+      self.$cookie["delete"]('user_id');
+      self.$cookie["delete"]('access_token');
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.get("/api/auth/logout", {
+        headers: headers
+      }).then(function (response) {
+        window.location.href = "/?logout";
+      })["catch"](function (error) {
+        window.location.href = "/?logout";
+        console.log(error);
+      });
+    },
     handleDelete: function handleDelete(e) {
       e.preventDefault();
       var self = this;
@@ -1811,7 +1816,9 @@ __webpack_require__.r(__webpack_exports__);
         headers: headers
       }).then(function (response) {
         console.log(response);
+        alert('Deleted successfully');
       })["catch"](function (error) {
+        alert('Delete failed');
         console.log(error);
       });
     },
@@ -1831,7 +1838,9 @@ __webpack_require__.r(__webpack_exports__);
         headers: headers
       }).then(function (response) {
         console.log(response);
+        alert('Updated successfully');
       })["catch"](function (error) {
+        alert('Update failed');
         console.log(error);
       });
     },
@@ -1849,6 +1858,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response.data);
         self.allbooks = response.data;
       })["catch"](function (error) {
+        alert('Get failed');
         console.log(error);
       });
     },
@@ -1871,6 +1881,7 @@ __webpack_require__.r(__webpack_exports__);
         self.not_found = "Not found";
       })["catch"](function (error) {
         console.log(error);
+        alert('Find failed');
       });
     },
     handleStore: function handleStore(e) {
@@ -1890,8 +1901,10 @@ __webpack_require__.r(__webpack_exports__);
         headers: headers
       }).then(function (response) {
         console.log(response);
+        alert('Stored successfully');
       })["catch"](function (error) {
         console.log(error);
+        alert('Store failed');
       });
     }
   }
@@ -1962,10 +1975,11 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
         self.$cookie.set("access_token", response.data.access_token, "111");
         self.$cookie.set("user_id", response.data.user_id.id, "111");
+        self.$cookie.set("user_name", response.data.user_id.name, "111");
         self.$router.push('books');
       })["catch"](function (error) {
         console.log(error);
-        self.login_error = "Error, please try again";
+        self.login_error = "Login failed. Check your credentials";
       });
     }
   }
@@ -2038,7 +2052,7 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
         console.log("error");
-        self.register_error = "Error, please try again";
+        self.register_error = "An error has ocurred. Please try again";
       });
     }
   }
@@ -6487,6 +6501,28 @@ __webpack_require__.r(__webpack_exports__);
 
 }));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/is-buffer/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/is-buffer/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
 
 
 /***/ }),
@@ -37531,6 +37567,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("div", { staticClass: "logout" }, [
+      _vm._v("\nWelcome "),
+      _c("strong", [_vm._v(_vm._s(this.$cookie.get("user_name")))]),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" }, on: { click: _vm.handleLogout } }, [
+        _vm._v("Logout")
+      ])
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -37568,15 +37613,15 @@ var render = function() {
               item.title
                 ? _c("div", [
                     _c("span", { staticStyle: { color: "green" } }, [
-                      _vm._v("ID: " + _vm._s(item.id))
+                      _vm._v("#" + _vm._s(item.id))
                     ]),
                     _vm._v(" "),
-                    _c("span", { staticStyle: { color: "black" } }, [
-                      _vm._v("TITLE: " + _vm._s(item.title))
+                    _c("span", { staticStyle: { color: "red" } }, [
+                      _vm._v(" " + _vm._s(item.title))
                     ]),
                     _vm._v(" "),
                     _c("span", { staticStyle: { color: "blue" } }, [
-                      _vm._v("BODY: " + _vm._s(item.body))
+                      _vm._v(" " + _vm._s(item.body))
                     ])
                   ])
                 : _vm._e()
@@ -37635,19 +37680,15 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("p", { staticStyle: { "margin-left": "30px" } }, [
-          _vm._v(_vm._s(_vm.byidbooks.title))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticStyle: { "margin-left": "30px" } }, [
-          _vm._v(_vm._s(_vm.byidbooks.body))
-        ]),
-        _vm._v(" "),
-        !_vm.byidbooks.title
-          ? _c("p", { staticStyle: { "margin-left": "30px" } }, [
-              _vm._v(_vm._s(_vm.not_found))
-            ])
-          : _vm._e()
+        _c("div", { staticClass: "left" }, [
+          _c("p", [_vm._v("Title: " + _vm._s(_vm.byidbooks.title))]),
+          _vm._v(" "),
+          _c("p", [_vm._v("Body: " + _vm._s(_vm.byidbooks.body))]),
+          _vm._v(" "),
+          !_vm.byidbooks.title
+            ? _c("p", [_vm._v(_vm._s(_vm.not_found))])
+            : _vm._e()
+        ])
       ]
     ),
     _vm._v(" "),
@@ -53521,8 +53562,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/Thomas/Workspace/backendtest/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/Thomas/Workspace/backendtest/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /private/var/www/flydevs/laravel-vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /private/var/www/flydevs/laravel-vue/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
