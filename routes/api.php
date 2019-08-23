@@ -14,12 +14,8 @@ Route::group([ 'prefix' => 'auth'], function () {
 		Route::get('books/{id}', 'BooksController@show');
 		Route::post('books', 'BooksController@store');
 		Route::put('books/{id}', 'BooksController@update');
-		Route::delete('books/{id}', 'BooksController@delete');
-
-
+        Route::delete('books/{id}', 'BooksController@delete');
         
     });
 
 });
-
-

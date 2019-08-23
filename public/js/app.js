@@ -1726,15 +1726,85 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      id: "",
+      title: "",
+      body: ""
+    };
+  },
   mounted: function mounted() {
     console.log("books");
     if (!this.$cookie.get('access_token')) this.$router.push('/');
+  },
+  methods: {
+    handleDelete: function handleDelete(e) {
+      e.preventDefault();
+      var self = this;
+      var body = {
+        user_id: this.$cookie.get('user_id')
+      };
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios["delete"]("/api/auth/books/".concat(this.id, "/").concat(this.$cookie.get('user_id')), {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    handleUpdate: function handleUpdate(e) {},
+    handleGetAll: function handleGetAll(e) {},
+    handleStore: function handleStore(e) {
+      e.preventDefault();
+      var self = this;
+      var body = {
+        title: this.title,
+        body: this.body,
+        user_id: this.$cookie.get('user_id')
+      };
+      console.log(this.$cookie.get('user_id'));
+      var headers = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Authorization': 'Bearer ' + this.$cookie.get('access_token')
+      };
+      axios.post('/api/auth/books', body, {
+        headers: headers
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
-
-methods: {}
 
 /***/ }),
 
@@ -1798,6 +1868,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response);
         self.$cookie.set("access_token", response.data.access_token, "111");
+        self.$cookie.set("user_id", response.data.user_id.id, "111");
         self.$router.push('books');
       })["catch"](function (error) {
         console.log(error);
@@ -37357,7 +37428,189 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "crud" })
+  return _c("div", {}, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.handleGetAll($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          staticClass: "fadeIn fourth",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "submit", value: "Get all books" }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.handleFindById($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          staticClass: "fadeIn",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "text", placeholder: "ID" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "fadeIn fourth",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "submit", value: "Find by id" }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.handleStore($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.title,
+              expression: "title"
+            }
+          ],
+          staticClass: "fadeIn",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "text", placeholder: "Title" },
+          domProps: { value: _vm.title },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.title = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.body,
+              expression: "body"
+            }
+          ],
+          staticClass: "fadeIn",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "text", placeholder: "Body" },
+          domProps: { value: _vm.body },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.body = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "fadeIn fourth",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "submit", value: "Create" }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.handleUpdate($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          staticClass: "fadeIn",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "text", placeholder: "Title" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "fadeIn",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "text", placeholder: "Body" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "fadeIn fourth",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "submit", value: "Find by id" }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.handleDelete($event)
+          }
+        }
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.id,
+              expression: "id"
+            }
+          ],
+          staticClass: "fadeIn",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "text", placeholder: "id for delete" },
+          domProps: { value: _vm.id },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.id = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "fadeIn fourth",
+          staticStyle: { "margin-top": "20px" },
+          attrs: { type: "submit", value: "Delete by id" }
+        })
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

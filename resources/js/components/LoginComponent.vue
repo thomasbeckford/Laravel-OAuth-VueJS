@@ -44,6 +44,7 @@ export default {
           .then(function (response) {
             console.log(response)
             self.$cookie.set("access_token", response.data.access_token, "111");
+            self.$cookie.set("user_id", response.data.user_id.id, "111");
             self.$router.push('books')
           })
           .catch(function (error) {
