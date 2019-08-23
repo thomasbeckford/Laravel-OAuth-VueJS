@@ -1759,6 +1759,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1767,12 +1782,16 @@ __webpack_require__.r(__webpack_exports__);
       body: "",
       id_find: "",
       id_update: "",
-      allbooks: "",
+      allbooks: {
+        title: '',
+        body: ''
+      },
       byidbooks: "",
       title_store: "",
       body_store: "",
       title_update: "",
-      body_update: ""
+      body_update: "",
+      not_found: ""
     };
   },
   mounted: function mounted() {
@@ -1849,6 +1868,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         console.log(response);
         self.byidbooks = response.data;
+        self.not_found = "Not found";
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1858,7 +1878,7 @@ __webpack_require__.r(__webpack_exports__);
       var self = this;
       var body = {
         title: this.title_store,
-        body: this.body
+        body: this.body_store
       };
       console.log(this.$cookie.get('user_id'));
       var headers = {
@@ -37539,7 +37559,31 @@ var render = function() {
             })
           ]
         ),
-        _vm._v("\n    " + _vm._s(_vm.allbooks) + "\n  ")
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticStyle: { "list-style-type": "none" } },
+          _vm._l(_vm.allbooks, function(item, key, index) {
+            return _c("li", [
+              item.title
+                ? _c("div", [
+                    _c("span", { staticStyle: { color: "green" } }, [
+                      _vm._v("ID: " + _vm._s(item.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticStyle: { color: "black" } }, [
+                      _vm._v("TITLE: " + _vm._s(item.title))
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticStyle: { color: "blue" } }, [
+                      _vm._v("BODY: " + _vm._s(item.body))
+                    ])
+                  ])
+                : _vm._e()
+            ])
+          }),
+          0
+        )
       ]
     ),
     _vm._v(" "),
@@ -37592,12 +37636,18 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("p", { staticStyle: { "margin-left": "30px" } }, [
-          _vm._v("Title: " + _vm._s(_vm.byidbooks.title))
+          _vm._v(_vm._s(_vm.byidbooks.title))
         ]),
         _vm._v(" "),
         _c("p", { staticStyle: { "margin-left": "30px" } }, [
-          _vm._v("Body: " + _vm._s(_vm.byidbooks.body))
-        ])
+          _vm._v(_vm._s(_vm.byidbooks.body))
+        ]),
+        _vm._v(" "),
+        !_vm.byidbooks.title
+          ? _c("p", { staticStyle: { "margin-left": "30px" } }, [
+              _vm._v(_vm._s(_vm.not_found))
+            ])
+          : _vm._e()
       ]
     ),
     _vm._v(" "),
